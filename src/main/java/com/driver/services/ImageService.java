@@ -45,11 +45,11 @@ public class ImageService {
 
         String d = image.getDimensions();
 
-        String []arr = d.split("@");
+        String []arr = d.split("X");
 
         int givenDim = Integer.valueOf(arr[0])*Integer.valueOf(arr[1]);
 
-        String arr1[] = screenDimensions.split("@");
+        String arr1[] = screenDimensions.split("X");
         int gotDim = Integer.valueOf(arr1[0])*Integer.valueOf(arr1[1]);
 
 

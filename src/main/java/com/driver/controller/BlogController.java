@@ -22,7 +22,14 @@ public class BlogController {
                                      @RequestParam String content) throws Exception {
         // Create a blog and add it under given user
 
-        blogService.createAndReturnBlog(userId,title,content);
+        try {
+
+            blogService.createAndReturnBlog(userId, title, content);
+        }
+        catch(Exception e)
+        {
+            throw new Exception("Id is not present");
+        }
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
