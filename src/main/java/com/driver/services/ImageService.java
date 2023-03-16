@@ -24,7 +24,7 @@ public class ImageService {
         Blog blog = blogRepository2.findById(blogId).get();
         image.setBlog(blog);
 
-        blogRepository2.save(blog);
+        imageRepository2.save(image);
 
         return image;
 
@@ -45,11 +45,11 @@ public class ImageService {
 
         String d = image.getDimensions();
 
-        String []arr = d.split("*");
+        String []arr = d.split("@");
 
         int givenDim = Integer.valueOf(arr[0])*Integer.valueOf(arr[1]);
 
-        String arr1[] = screenDimensions.split("*");
+        String arr1[] = screenDimensions.split("@");
         int gotDim = Integer.valueOf(arr1[0])*Integer.valueOf(arr1[1]);
 
 
