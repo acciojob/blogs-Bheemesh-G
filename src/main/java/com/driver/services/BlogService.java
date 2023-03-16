@@ -23,14 +23,7 @@ public class BlogService {
 
     public Blog createAndReturnBlog(Integer userId, String title, String content) throws Exception {
         //create a blog at the current time
-        User user;
-        try {
-            user = userRepository1.findById(userId).get();
-        }
-        catch(Exception e)
-        {
-            throw new Exception("No id is present");
-        }
+        User user = userRepository1.findById(userId).get();
 
         Blog blog = new Blog();
         blog.setTitle(title);
