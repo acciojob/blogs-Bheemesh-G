@@ -52,6 +52,11 @@ public class ImageService {
 
        int count = dim2/dim1;
 
+       if(dim1>dim2)
+       {
+           return 0;
+       }
+
        return count;
 
     }
