@@ -39,25 +39,28 @@ public class ImageService {
 
     public int countImagesInScreen(Integer id, String screenDimensions) {
         //Find the number of images of given dimensions that can fit in a screen having `screenDimensions`
+        String [] scrarray = screenDimensions.split("X"); //A=Length   X    B=Breadth
+//        if(!imageRepository2.findById(id).isPresent()){
+//            throw new Exception();
+//        }
+        Image image = imageRepository2.findById(id).get();
 
+        String imageDimensions = image.getDimensions();
+        String [] imgarray = imageDimensions.split("X");
 
-       Image image = imageRepository2.findById(id).get();
-       String givenDim = image.getDimensions();
-       String []arr = givenDim.split("X");
-       int dim1 = (Integer.valueOf(arr[0]))*(Integer.valueOf(arr[1]));
+        int scrl = Integer.parseInt(scrarray[0]); //A -- > integer
+        int scrb = Integer.parseInt(scrarray[1]); //B -- > integer
 
-       String screenDim = screenDimensions;
-       String arr1[] = screenDim.split("X");
-       int dim2 = (Integer.valueOf(arr1[0]))*(Integer.valueOf(arr1[1]));
+        int imgl = Integer.parseInt(imgarray[0]); //A -- > integer
+        int imgb = Integer.parseInt(imgarray[1]); //B -- > integer
 
-       int count = dim2/dim1;
+        return no_Images(scrl,scrb,imgl,imgb);
 
-       if(dim1>dim2)
-       {
-           return 0;
-       }
+    }
 
-       return count;
-
+    private int no_Images(int scrl, int scrb, int imgl, int imgb) {
+        int lenC = scrl/imgl; //
+        int lenB = scrb/imgb;
+        return lenC*lenB;
     }
 }
